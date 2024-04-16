@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  basic-express-docker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: basic-express-docker
+    ports:
+      - 4001:4000
+    volumes:
+      - ./:/app
+      - node_modules_basic_express:/node_modules
+
+volumes:
+  node_modules_basic_express:
