@@ -1,16 +1,26 @@
 version: '3.4'
 
+# cada uno de los contenedores de mi applicacion
 services:
+  # contenedor para ejecutar la api de express
   basic-express-docker:
+    # creamos el contenedor a partir de la imagen personalizada de dockerfile
     build:
+      # indicamos donde se encuentra el Dockerfile
       context: .
+      # nombre del fichero del dockerfile
       dockerfile: Dockerfile
+    # nomnbre del contenedor
     container_name: basic-express-docker
+    # bindeo de puertos para acceder al servicion desde otra maquina
     ports:
       - 4001:4000
     volumes:
+      # bindeo del codigo, el codigo que escribimos fuera se copia dentro
       - ./:/app
+      # persistencia de la carpeta node_modules
       - node_modules_basic_express:/node_modules
 
+# indicamos el volumen que acabamos de crear
 volumes:
   node_modules_basic_express:
